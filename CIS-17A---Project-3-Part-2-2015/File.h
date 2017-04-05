@@ -1,5 +1,8 @@
 #pragma once
 #include <string>
+#include <memory>
+#include <vector>
+
 class File
 {
 private:
@@ -9,5 +12,7 @@ public:
 	~File();
 
 	std::string getName() { return _name; }
+	//std::shared_ptr<File> FindFile(std::string name);
 };
+
 

@@ -5,6 +5,8 @@ void DisplayMenu(shared_ptr<Folder> currentFolder, shared_ptr<Folder> parent);
 void AddFileMenu(shared_ptr<Folder> currentFolder);
 void AddFolderMenu(shared_ptr<Folder> currentFolder);
 shared_ptr<Folder> NavigateToFolder(shared_ptr<Folder> currentFolder);
+shared_ptr<File> Search(shared_ptr<Folder>currentFolder);
+
 
 int main()
 {
@@ -17,7 +19,9 @@ int main()
 		cin >> choice;
 		switch (choice)
 		{
-		case 1: system("cls"); cout << "Contents of " << currentFolder->getName() << currentFolder->ListContents() << endl; system("pause"); break;
+		case 1: system("cls"); 
+			cout << "Contents of " << currentFolder->getName() << currentFolder->ListContents() << endl; 
+			system("pause"); break;
 		case 2: AddFileMenu(currentFolder); break;
 		case 3: {
 			auto newcurrent = NavigateToFolder(currentFolder); 
@@ -26,7 +30,7 @@ int main()
 			cout << endl << "Now in folder " << newcurrent->getName() << "!";
 			break;
 		}
-		case 5: //IMPLEMENT THIS
+		case 5:	Search(currentFolder); break;				 //IMPLEMENT THIS //create another menu //like addfilemenu
 		case 4: AddFolderMenu(currentFolder); break;
 		case 6: {
 			if (parentFolder != nullptr) {
@@ -90,4 +94,26 @@ void AddFolderMenu(shared_ptr<Folder> currentFolder)
 
 	auto newFolder = make_shared<Folder>(name);
 	currentFolder->AddFolder(newFolder);
+}
+
+shared_ptr<File> Search(shared_ptr<Folder>currentFolder)
+{
+	system("cls");
+	cout << "Enter The File name: ";
+	string fileName;
+	cin >> fileName;
+	cin.ignore();
+
+	
+	auto file = currentFolder->Search(fileName);
+	return file;
+
+	system("pause");
+	//promt user for a file name 
+	//search the current folder for the file
+	//add method in folder to seach for files
+	//If search call returns nullptr 	
+
+
+
 }
