@@ -54,9 +54,9 @@ std::shared_ptr<Folder> Folder::FindFolder(std::string name)
 
 std::shared_ptr<File> Folder::Search(std::string name)
 {
-	for (auto file : _files) //so this line defines the pointer "file" //_files is a vector 
+	for (auto folder : _folders ) //so this line defines the pointer "file" //"_files" is a vector 
 	{
-		//auto file = file.Search();
+		auto file = folder->Search(name);
 		if (file->getName() == name) {    
 			return file;
 		}
