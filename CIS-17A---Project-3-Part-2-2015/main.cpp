@@ -107,9 +107,9 @@ void Search(shared_ptr<Folder>currentFolder)
 	
 	auto file = currentFolder->Search(fileName);
 
-	if () //work on this
+	if (Search != nullptr) //work on this  //got it!
 	{
-		cout << file << endl; ;
+		cout << fileName << endl; 
 	}
 
 	else
